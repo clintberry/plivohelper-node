@@ -1,0 +1,16 @@
+{
+  "author": "Clint Berry <clint@elojasystems.com> (http://clintberry.com)",
+  "name": "plivo",
+  "description": "Helper library for Plivo Framework",
+  "version": "0.1.0",
+  "homepage": "http://www.plivo.org",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/clintberry/plivohelper-node.git"
+  },
+  "engines": {
+    "node": "~0.4.11 || 0.4.11-pre"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

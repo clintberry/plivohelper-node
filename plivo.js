@@ -1,7 +1,10 @@
 
+//Get required modules
+var Request = require('request');
+var qs = require('querystring');
 
 
-Plivo = {};
+var Plivo = {};
 
 Plivo.options = {};
 Plivo.options.host = 'http://localhost';
@@ -10,25 +13,43 @@ Plivo.options.version = 'v1';
 Plivo.options.accountSid = '';
 Plivo.options.authToken = '';
 
-
-Plivo.request = function (path, method, vars) {
-    
+//Define a new error object - A string is not an error, thanks Guillermo: 
+//http://www.devthought.com/2011/12/22/a-string-is-not-an-error/
+function PlivoError (msg) {
+  Error.call(this);
+  Error.captureStackTrace(this, arguments.callee);
+  this.message = msg;
+  this.name = 'PlivoError';
 };
 
-Plivo.phoneStatus = function (vars, callback) {
-    
-};
+PlivoError.prototype.__proto__ = Error.prototype;
 
-Plivo.phoneSearch = function (vars, callback) {
-    
-};
 
-Plivo.phoneOrder = function (vars, callback) {
-    
+//Main request function
+var request = function (action, method, vars, callback) {
+  var err = null;
+  var path = Plivo.options.host + ':' + Plivo.options.port + '/' + action +'/';
+  if(vars) {
+    path += '?' + qs.stringify(vars);
+  }
+  Request({
+    method: method,
+    uri: path
+  }, function(error, response, body) {
+    if(response.statusCode != 200) {
+      err = new PlivoError(error);
+    }
+    callback(err, body);
+  });
 };
 
 Plivo.call = function (vars, callback) {
+    var action = 'Call';
+    var method = 'POST';
     
+    request(action, method, vars, function(err, response) {
+      callback(err, response);
+    });
 };
 
 Plivo.bulkCall = function (vars, callback) {
@@ -134,6 +155,8 @@ Plivo.conferenceList = function (vars, callback) {
 Plivo.conferenceListMembers = function (vars, callback) {
     
 };
+
+
 
 
 //TODO: Program XML response functions so that they can be chained

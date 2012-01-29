@@ -11,6 +11,8 @@
   "engines": {
     "node": "~0.4.11 || 0.4.11-pre"
   },
-  "dependencies": {},
+  "dependencies": {
+      "request" : "+2.0.0"
+  },
   "devDependencies": {}
 }

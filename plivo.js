@@ -2,7 +2,7 @@
 //Get required modules
 var Request = require('request');
 var qs = require('querystring');
-
+var xmlbuilder = require('xmlbuilder');
 
 var Plivo = {};
 
@@ -26,9 +26,10 @@ PlivoError.prototype.__proto__ = Error.prototype;
 
 
 //Main request function
-var request = function (action, method, vars, callback) {
+var request = function (action, vars, callback) {
   var err = null;
-  var path = Plivo.options.host + ':' + Plivo.options.port + '/' + action +'/';
+  var path = Plivo.options.host + ':' + Plivo.options.port + '/' + Plivo.options.version + '/' + action +'/';
+  var method = 'POST';
   if(vars) {
     path += '?' + qs.stringify(vars);
   }
@@ -44,48 +45,73 @@ var request = function (action, method, vars, callback) {
 };
 
 Plivo.call = function (vars, callback) {
-    var action = 'Call';
-    var method = 'POST';
-    
-    request(action, method, vars, function(err, response) {
-      callback(err, response);
-    });
+  var action = 'Call';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.bulkCall = function (vars, callback) {
-    
+  var action = 'BulkCall';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.groupCall = function (vars, callback) {
-    
+  var action = 'GroupCall';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.transferCall = function (vars, callback) {
-    
+  var action = 'TransferCall';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.hangupAllCalls = function (callback) {
-    
+  var action = 'HangupAllCall';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.hangupCall = function (vars, callback) {
-    
+  var action = 'HangupCall';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.scheduleHangup = function (vars, callback) {
-    
+  var action = 'ScheduleHangup';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.cancelScheduledHangup = function (vars, callback) {
-    
+  var action = 'CancelScheduledHangup';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  }); 
 };
 
 Plivo.recordStart = function (vars, callback) {
-    
+  var action = 'RecordStart';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  }); 
 };
 
 Plivo.recordStop = function (vars, callback) {
-    
+  var action = 'RecordStop';
+  request(action, vars, function(err, response) {
+    callback(err, response);
+  });
 };
 
 Plivo.play = function (vars, callback) {
@@ -158,9 +184,11 @@ Plivo.conferenceListMembers = function (vars, callback) {
 
 
 
+Plivo.response = function() {
 
-//TODO: Program XML response functions so that they can be chained
-Plivo.response = {};
+  this.function()
+
+};
 
 
 

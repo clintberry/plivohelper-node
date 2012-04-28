@@ -183,11 +183,46 @@ Plivo.conferenceListMembers = function (vars, callback) {
 };
 
 
+Plivo.Response = function() {
 
-Plivo.response = function() {
+  var object = this;
+  var xml = xmlbuilder.create().begin('Response');
 
-  this.function()
+  //Plivo Response Elements
+  this.speak = function(text, options) {
+    xml = xml.ele('Speak');
+    insertAttributes(options);
+    xml.txt(text);
+    return object;
+  }
 
+  this.dial = function(text, options) {
+
+  }
+
+  this.number = function(text) {
+
+  }
+
+  this.up = function() {
+    xml.up();
+    return object;
+  }
+
+  this.toString = function() {
+    return xml.toString();
+  }
+
+  var insertAttributes = function(options, valid) {
+    if('object' == typeof options) {
+      for(var key in options) {
+        if(valid && valid.indexOf(key) === -1) {
+          throw new PlivoError('Trying to use an attribute "' + key + '" that is not allowed in this element');
+        }
+        xml.att(key, options[key]);
+      }
+    }
+  }
 };
 
 

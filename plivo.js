@@ -8,7 +8,7 @@ var Plivo = {};
 
 Plivo.options = {};
 Plivo.options.host = 'http://localhost';
-Plivo.options.port = '8080';
+Plivo.options.port = '8088';
 Plivo.options.version = 'v1';
 Plivo.options.accountSid = '';
 Plivo.options.authToken = '';

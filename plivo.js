@@ -121,7 +121,7 @@ Plivo.recordStop = function (vars, callback) {
 };
 
 Plivo.play = function (vars, callback) {
-  
+
 };
 
 Plivo.playStop = function (vars, callback) {

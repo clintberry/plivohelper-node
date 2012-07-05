@@ -1,33 +1,25 @@
 {
   "name": "plivo",
   "description": "Plivo telephony helper",
-  "version": "0.0.1",
+  "version": "0.0.1alpha",
   "author": {
     "name": "Clint Berry",
-    "email": "clint+plivo@system-11.com"
+    "email": "clint+plivohelper@system-11.com"
   },
   "keywords": [
     "phone",
     "telephony"
   ],
-  "devDependencies": {
-  },
-  "main": "./plivo.js",
-  "_id": "plivo@0.0.1",
+  "repository": "git://github.com/clintberry/plivohelper-node.git",
   "dependencies": {
     "request" : "2.9.202",
     "xmlbuilder" : "0.3.0"
   },
+  "devDependencies": {
+  },
   "optionalDependencies": {},
+  "main": "./plivo.js",
   "engines": {
     "node": "*"
-  },
-  "_engineSupported": true,
-  "_npmVersion": "1.1.16",
-  "_nodeVersion": "v0.6.15",
-  "_defaultsLoaded": true,
-  "dist": {
-    "shasum": "824d1c02012c431eefad6594f21ce7acb88c2af3"
-  },
-  "_from": "plivo@>= 0.0.1"
+  }
 }
